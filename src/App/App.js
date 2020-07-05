@@ -34,8 +34,8 @@ const App = () => {
           COVID -19
         </Typography>
         <Countries handleCountryChange={handleCountryChange} />
-        <Chart data={data} country={country} />
         <Cards data={data} />
+        <Chart data={data} country={country} />
       </ThemeProvider>
     </div>
   );
