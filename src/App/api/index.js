@@ -39,3 +39,23 @@ export const getCountriesList = async () => {
     console.log(error);
   }
 };
+export const getTop10Confirmed= async ()=>{
+  try{
+    const { data } = await axios.get(URL + '/confirmed');
+    console.log(data)
+    const sortedData = data.sort((a,b)=>b.confirmed-a.confirmed);
+    console.log(sortedData)
+    const top10Data = sortedData.slice(0,10);
+    console.log(top10Data)
+    const modifiedData = top10Data.map((country) => ({
+      confirmed: country.confirmed,
+      deaths: country.deaths,
+      date: country.lastUpdate,
+      countryRegion:country.countryRegion,
+    }));
+    console.log(modifiedData)
+    return modifiedData;
+  }catch(error){
+    console.log(error);
+  }
+}
